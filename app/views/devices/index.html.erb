@@ -20,10 +20,10 @@
     <% @devices.each do |device| %>
       <tr>
         <td><%= device.manufacturer %></td>
-        <td><%= device.macaddress %></td>
+        <td><%= device.macaddresswifi %></td>
+        <td><%= device.macaddresslan %></td>
         <td><%= device.group %></td>
         <td><%= device.ip %></td>
-        <td><%= device.wifi %></td>
         <td><%= device.vpn %></td>
         <td><%= device.user_id %></td>
         <td><%= link_to 'Show', device %></td>

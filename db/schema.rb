@@ -15,10 +15,10 @@ ActiveRecord::Schema.define(version: 20140223112905) do
 
   create_table "devices", force: true do |t|
     t.string   "manufacturer"
-    t.string   "macaddress"
+    t.string   "macaddresswifi"
+    t.string   "macaddresslan"
     t.string   "group"
     t.string   "ip"
-    t.boolean  "wifi"
     t.boolean  "vpn"
     t.integer  "user_id"
     t.datetime "created_at"
