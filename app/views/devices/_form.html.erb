@@ -37,7 +37,7 @@
   </div>
   <div class="field">
     <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= collection_select(:device, :user_id, User.all, :id, :firstname) %>
   </div>
   <div class="actions">
     <%= f.submit %>

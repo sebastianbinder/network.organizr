@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @iprange.name %>
+</p>
+
+<p>
+  <strong>Ipbase:</strong>
+  <%= @iprange.ipbase %>
+</p>
+
+<%= link_to 'Edit', edit_iprange_path(@iprange) %> |
+<%= link_to 'Back', ipranges_path %>

@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140223112905) do
     t.datetime "updated_at"
   end
 
-  create_table "ip_ranges", force: true do |t|
+  create_table "ipranges", force: true do |t|
     t.string   "name"
     t.string   "ipbase"
     t.datetime "created_at"

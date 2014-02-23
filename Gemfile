@@ -46,3 +46,4 @@ gem 'capistrano', group: :development
 
 
 gem 'bootstrap-sass'
+gem 'whenever', :require => false

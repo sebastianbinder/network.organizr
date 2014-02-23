@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :iprange_id %><br>
-    <%= collection_select(:ip_range, :iprange_id, IpRange.all, :id, :name) %>
+    <%= collection_select(:user, :iprange_id, Iprange.all, :id, :name) %>
   </div>
   <div class="actions">
     <%= f.submit %>
