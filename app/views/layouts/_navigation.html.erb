@@ -1,0 +1,5 @@
+<ul class="nav navbar-nav">
+	<li <% if params[:controller] == "devices" %>class="active"<% end %>><%= link_to(t('.devices'), devices_path()) %></li>
+	<li <% if params[:controller] == "users" %>class="active"<% end %>><%= link_to(t('.users'), users_path()) %></li>
+	<li <% if params[:controller] == "ip_ranges" %>class="active"<% end %>><%= link_to(t('.ip_ranges'), ip_ranges_path()) %></li>
+</ul>
