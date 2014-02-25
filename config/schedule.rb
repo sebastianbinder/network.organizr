@@ -8,9 +8,7 @@
 # set :output, "/path/to/my/cron_log.log"
 #
 every 1.hour do
-  command "rm /etc/dnsmasq.d/dnsmasq_hosts_latest.conf"
-  command "curl http://localhost/hosts/dnsmasq.txt >> /etc/dnsmasq.d/dnsmasq_hosts_latest.conf"
-  command "/etc/dnsmasq.d/current_hosts.sh"
+  command "/etc/dnsmasq/current_hosts.sh"
 end
 #
 # every 4.days do
