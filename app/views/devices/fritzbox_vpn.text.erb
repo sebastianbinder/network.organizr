@@ -34,7 +34,7 @@ vpncfg {
 			} 
 		}
 		phase2remoteid {
-			ipaddr = 10.10.1.112; 
+			ipaddr = <%= device.user.iprange.ipbase %>1<%= device.ip %>; 
 		}
 		phase2ss = "esp-all-all/ah-none/comp-all/no-pfs";
 		accesslist = "permit ip 10.10.0.0 255.255.240.0 <%= device.user.iprange.ipbase %>1<%= device.ip %> 255.255.255.255", 
