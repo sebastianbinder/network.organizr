@@ -1,39 +1,43 @@
-<h1>Listing devices</h1>
+<div class="row">
+	<h1>Devices</h1>
+</div>
 
-<table>
+<div class="row">
+<table class="table">
   <thead>
-    <tr>
-      <th>Manufacturer</th>
-      <th>Macaddress</th>
-      <th>Group</th>
-      <th>Ip</th>
-      <th>Wifi</th>
-      <th>Vpn</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+	<tr>
+	  <th>Manufacturer</th>
+	  <th>MAC-Address (WIFI)</th>
+	  <th>MAC-Address (LAN)</th>
+	  <th>Group</th>
+	  <th>IP</th>
+	  <th>VPN</th>
+	  <th>User</th>
+	  <th></th>
+	  <th></th>
+	  <th></th>
+	</tr>
   </thead>
 
   <tbody>
-    <% @devices.each do |device| %>
-      <tr>
-        <td><%= device.manufacturer %></td>
-        <td><%= device.macaddresswifi %></td>
-        <td><%= device.macaddresslan %></td>
-        <td><%= device.group %></td>
-        <td><%= device.ip %></td>
-        <td><%= device.vpn %></td>
-        <td><%= device.user_id %></td>
-        <td><%= link_to 'Show', device %></td>
-        <td><%= link_to 'Edit', edit_device_path(device) %></td>
-        <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+	<% @devices.each do |device| %>
+	  <tr>
+		<td><%= device.manufacturer %></td>
+		<td><%= device.macaddresswifi %></td>
+		<td><%= device.macaddresslan %></td>
+		<td><%= device.group %></td>
+		<td><%= device.user.iprange.ipbase %><%= device.ip %></td>
+		<td><%= device.vpn %></td>
+		<td><%= device.user.firstname %> <%= device.user.lastname %></td>
+		<td><%= link_to 'Show', device %></td>
+		<td><%= link_to 'Edit', edit_device_path(device) %></td>
+		<td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	  </tr>
+	<% end %>
   </tbody>
 </table>
 
 <br>
 
 <%= link_to 'New Device', new_device_path %>
+</div>

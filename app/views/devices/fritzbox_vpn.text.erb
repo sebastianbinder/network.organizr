@@ -1,0 +1,47 @@
+<% @devices.each do |device| %>
+vpncfg {
+	connections { 
+		enabled = yes;
+		conn_type = conntype_user; 
+		name = "<%= device.user.lastname.downcase %>-<%= device.user.firstname.downcase %>-<%= device.group.downcase %>-<%= device.manufacturer.downcase %>"; 
+		always_renew = no; 
+		reject_not_encrypted = no; 
+		dont_filter_netbios = yes; 
+		localip = 0.0.0.0; 
+		local_virtualip = 0.0.0.0; 
+		remoteip = 0.0.0.0; 
+		remote_virtualip = <%= device.user.iprange.ipbase %>1<%= device.ip %>; 
+		remoteid {
+			key_id = "<%= device.user.lastname.downcase %>-<%= device.user.firstname.downcase %>-<%= device.group.downcase %>-<%= device.manufacturer.downcase %>";
+		} 
+		mode = phase1_mode_aggressive; 
+		phase1ss = "all/all/all"; 
+		keytype = connkeytype_pre_shared; 
+		key = "<% if device.macaddresslan.blank? %><%= device.macaddresswifi.gsub(/:/,"").upcase %><% else %><%= device.macaddresslan.gsub(/:/,"").upcase %><% end %>"; 
+		cert_do_server_auth = no; 
+		use_nat_t = yes; 
+		use_xauth = yes; 
+		xauth {
+			valid = yes; 
+			username = "<%= device.user.lastname.downcase %>-<%= device.user.firstname.downcase %>-<%= device.group.downcase %>-<%= device.manufacturer.downcase %>"; 
+			passwd = "<% if device.macaddresslan.blank? %><%= device.macaddresswifi.gsub(/:/,"").downcase %><% else %><%= device.macaddresslan.gsub(/:/,"").downcase %><% end %>";
+		}
+		use_cfgmode = yes; 
+		phase2localid { 
+			ipnet {
+				ipaddr = 0.0.0.0; 
+				mask = 0.0.0.0;
+			} 
+		}
+		phase2remoteid {
+			ipaddr = 10.10.1.112; 
+		}
+		phase2ss = "esp-all-all/ah-none/comp-all/no-pfs";
+		accesslist = "permit ip 10.10.0.0 255.255.240.0 <%= device.user.iprange.ipbase %>1<%= device.ip %> 255.255.255.255", 
+			       "permit ip any <%= device.user.iprange.ipbase %>1<%= device.ip %> 255.255.255.255";
+	}
+	ike_forward_rules = "udp 0.0.0.0:500 0.0.0.0:500",
+						"udp 0.0.0.0:4500 0.0.0.0:4500";
+}
+<% end %>
+

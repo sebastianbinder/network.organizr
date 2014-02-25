@@ -64,6 +64,10 @@ class DevicesController < ApplicationController
   def dnsmasq_hosts
     @devices = Device.all
   end
+  
+  def fritzbox_vpn
+    @devices = Device.where(:vpn => true)
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

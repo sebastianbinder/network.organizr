@@ -1,10 +1,13 @@
-<h1>Listing ip_ranges</h1>
+<div class="row">
+	<h1>IP-Ranges</h1>
+</div>
 
-<table>
+<div class="row">
+	<table class="table">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Ipbase</th>
+      <th>IP-Base</th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,7 +18,7 @@
     <% @ipranges.each do |iprange| %>
       <tr>
         <td><%= iprange.name %></td>
-        <td><%= iprange.ipbase %></td>
+        <td><%= iprange.ipbase %>0</td>
         <td><%= link_to 'Show', iprange %></td>
         <td><%= link_to 'Edit', edit_iprange_path(iprange) %></td>
         <td><%= link_to 'Destroy', iprange, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,4 +29,6 @@
 
 <br>
 
-<%= link_to 'New Ip range', new_iprange_path %>
+<%= link_to 'New IP-Range', new_iprange_path %>
+
+</div>

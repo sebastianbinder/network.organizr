@@ -1,12 +1,15 @@
-<h1>Listing users</h1>
+<div class="row">
+	<h1>Users</h1>
+</div>
 
-<table>
+<div class="row">
+	<table class="table">
   <thead>
     <tr>
       <th>Firstname</th>
       <th>Lastname</th>
-      <th>Email</th>
-      <th>Iprange</th>
+      <th>E-Mail</th>
+      <th>IP-Range</th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,7 +22,7 @@
         <td><%= user.firstname %></td>
         <td><%= user.lastname %></td>
         <td><%= user.email %></td>
-        <td><%= user.iprange.name %></td>
+        <td><%= user.iprange.name %> (<%= user.iprange.ipbase %>0)</td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,3 +34,5 @@
 <br>
 
 <%= link_to 'New User', new_user_path %>
+
+</div>

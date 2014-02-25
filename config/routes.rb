@@ -6,6 +6,7 @@ NetworkOrganizr::Application.routes.draw do
   resources :ipranges
   
   get 'hosts/dnsmasq' => 'devices#dnsmasq_hosts'
+  get 'vpn/fritzbox' => 'devices#fritzbox_vpn'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
